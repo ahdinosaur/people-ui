@@ -1,0 +1,61 @@
+{
+  "name": "people-ui",
+  "version": "0.1.0",
+  "description": "user interface for people app",
+  "main": "index.js",
+  "scripts": {
+    "develop": "(export NODE_ENV=development; beefy index.js:bundle.js 5000 --live)",
+    "test": "(export NODE_ENV=test; testling)",
+    "start": "(export NODE_ENV=production; browserify index.js -o bundle.js -g uglifyify)",
+    "deploy": "(export NODE_ENV=production; npm start && npm run gh-pages)",
+    "gp-pages": "./bin/deploy git@github.com:ahdinosaur/people-ui origin gh-pages ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ahdinosaur/people-ui.git"
+  },
+  "keywords": [],
+  "author": "ahdinosaur",
+  "license": "AGPLv3",
+  "bugs": {
+    "url": "https://github.com/ahdinosaur/people-ui/issues"
+  },
+  "homepage": "https://github.com/ahdinosaur/people-ui",
+  "browserify": {
+    "transform": [
+      "envify",
+      "reactify",
+      "cssify"
+    ]
+  },
+  "testling": {
+    "files": "test/**/*.js",
+    "harness": "mocha",
+    "browsers": [
+      "ie/9..latest",
+      "firefox/15,18,21,23..nightly",
+      "chrome/20,23,26,29..canary",
+      "opera/15..next",
+      "safari/6..latest",
+      "iphone/6",
+      "ipad/6",
+      "android-browser/4.2"
+    ]
+  },
+  "dependencies": {
+    "browserify": "^3.41.0",
+    "cssify": "^0.5.0",
+    "uglifyify": "^2.1.1",
+    "fluxxor": "^1.1.0",
+    "envify": "^1.2.1",
+    "react": "^0.10.0",
+    "node-uuid": "^1.4.1",
+    "react-forms": "^0.1.0",
+    "reactify": "^0.13.1",
+    "lodash": "^2.4.1",
+    "debug": "^0.8.1"
+  },
+  "devDependencies": {
+    "beefy": "^1.1.0"
+  }
+}

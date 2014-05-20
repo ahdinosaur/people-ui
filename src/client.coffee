@@ -10,9 +10,9 @@ require('./index.css')
 if process.env.NODE_ENV isnt 'production'
   require('debug').enable("*")
 
-
-mainEl = document.createElement("main")
-document.body.appendChild(mainEl)
+if not document.querySelector('main')
+  mainEl = document.createElement("main")
+  document.body.appendChild(mainEl)
 
 React.renderComponent(
   <App flux={flux} />

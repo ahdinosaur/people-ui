@@ -1,5 +1,6 @@
 # @cjsx React.DOM
 
+debug = require('debug')("people-ui:components:Person")
 React = require('react')
 Fluxxor = require('fluxxor')
 ReactForms = require('react-forms')
@@ -20,7 +21,8 @@ module.exports = React.createClass
   mixins: [FluxChildMixin]
 
   render: ->
-    console.log(@props.person)
+    debug("render'ing Person", @props.person)
+
     return (
       <div>
         <button
@@ -38,7 +40,10 @@ module.exports = React.createClass
     )
 
   update: (person) ->
+    debug("update'ing person", person)
     @getFlux().actions.update(person)
 
   delete: (ev) ->
-    @getFlux().actions.delete(@props.person)
+    person = @props.person
+    debug("delete'ing person", person)
+    @getFlux().actions.delete(person)

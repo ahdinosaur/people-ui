@@ -2,13 +2,12 @@
   "name": "people-ui",
   "version": "0.1.0",
   "description": "user interface for people app",
-  "main": "index.js",
+  "main": "server.js",
+  "browser": "client.js",
   "scripts": {
-    "develop": "(export NODE_ENV=development; beefy index.js:bundle.js 5000 --live)",
+    "develop": "(export NODE_ENV=development; nodemon .)",
     "test": "(export NODE_ENV=test; testling)",
-    "start": "(export NODE_ENV=production; browserify index.js -o bundle.js -g uglifyify)",
-    "deploy": "(export NODE_ENV=production; npm start && npm run gh-pages)",
-    "gp-pages": "./bin/deploy git@github.com:ahdinosaur/people-ui origin gh-pages ."
+    "start": "(export NODE_ENV=production; node .)"
   },
   "repository": {
     "type": "git",
@@ -54,12 +53,18 @@
     "react": "^0.10.0",
     "fluxxor": "^1.1.0",
     "react-forms": "^0.1.0",
-    "node-uuid": "^1.4.1"
+    "node-uuid": "^1.4.1",
+    "node-cjsx": "^0.1.1",
+    "node-jsx": "^0.10.0",
+    "eco": "^1.1.0-rc-3",
+    "express": "^4.2.0",
+    "browserify-middleware": "^3.0.0",
+    "consolidate": "^0.10.0"
   },
   "devDependencies": {
-    "beefy": "^1.1.0",
     "testling": "^1.6.1",
     "chai": "^1.9.1",
-    "mocha": "^1.19.0"
+    "mocha": "^1.19.0",
+    "nodemon": "^1.0.19"
   }
 }

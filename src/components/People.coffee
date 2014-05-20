@@ -14,7 +14,7 @@ module.exports = React.createClass
   mixins: [FluxChildMixin]
 
   render: ->
-    console.log(@props.people)
+    debug("render'ing People", @props.people)
 
     return (
       <div>

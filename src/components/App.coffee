@@ -1,5 +1,6 @@
 # @cjsx React.DOM
 
+debug = require('debug')("people-ui:components:App")
 React = require('react')
 Fluxxor = require('fluxxor')
 
@@ -13,12 +14,17 @@ module.exports = React.createClass
 
   getStateFromFlux: ->
     flux = this.getFlux()
-    console.log(flux.store("People").people)
-    return people: flux.store("People").people
+    state = people: flux.store("People").people
+
+    debug("getStateFromFlux", state)
+
+    return state
 
   render: ->
+    debug("render'ing App", @state)
+
     return (
       <div>
-        <People people={this.state.people} />
+        <People people={@state.people} />
       </div>
     )
